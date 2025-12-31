@@ -21,7 +21,9 @@
       --wrap: 980px;
 
       --txtShadow: 0 2px 10px rgba(0,0,0,0.90);
+
       --bgImage: url("assets/sub-fixx-cyberpunk-underground-bass-website-background-circuitry.png");
+      --heroBanner: url("assets/sub-fixx-underground-bass-music-cyberpunk-streaming-banner.png");
     }
 
     *{ box-sizing:border-box; }
@@ -30,18 +32,22 @@
     body{
       margin:0;
       background-color: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.45;
+      text-shadow: var(--txtShadow);
+
+      /* base background image */
       background-image: var(--bgImage);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center top;
       background-attachment: fixed;
 
-      color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height:1.45;
-      text-shadow: var(--txtShadow);
+      position: relative;
     }
 
+    /* readability veil (keeps text clean) */
     body::before{
       content:"";
       position: fixed;
@@ -49,15 +55,41 @@
       pointer-events: none;
       z-index: 0;
       background:
-        radial-gradient(1200px 800px at 50% 0%, rgba(0,0,0,0.35), rgba(0,0,0,0.80) 70%),
-        linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.86));
+        radial-gradient(1200px 800px at 50% 0%,
+          rgba(0,0,0,0.18),
+          rgba(0,0,0,0.62) 70%),
+        linear-gradient(to bottom,
+          rgba(0,0,0,0.34),
+          rgba(0,0,0,0.72));
+    }
+
+    /* glow boost layer */
+    body::after{
+      content:"";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+
+      background-image: var(--bgImage);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center top;
+
+      opacity: 0.82;
+      mix-blend-mode: screen;
+      filter: brightness(1.35) contrast(1.25) saturate(1.55) blur(0.6px);
+    }
+
+    /* content always above background layers */
+    .wrap, main, header, section, footer{
+      position: relative;
+      z-index: 1;
     }
 
     .wrap{
       width: min(var(--wrap), calc(100% - 28px));
       margin: 0 auto;
-      position: relative;
-      z-index: 1;
     }
 
     /* INTRO */
@@ -139,27 +171,92 @@
     main{ position: relative; z-index: 1; }
     .is-hidden{ display:none !important; }
 
-    /* HERO */
-    .hero{ border-bottom: 1px solid var(--line); padding-top: 14px; }
-    .hero__bannerWrap{ display:flex; justify-content:center; padding: 0 14px; }
-    .hero__banner{
-      width: min(1200px, 100%);
-      height: min(52vh, 520px);
-      object-fit: cover;
-      object-position: center;
-      display:block;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: var(--shadow);
+    /* HERO (BLENDED) */
+    .hero{
+      border-bottom: 1px solid var(--line);
+      padding: 14px 0 0;
     }
-    .hero__content{ padding: 18px 0 22px; text-align:center; }
-    h1{ margin: 0; font-size: clamp(28px, 5vw, 56px); letter-spacing: 0.12em; }
-    .hero__tagline{ margin: 10px auto 0; max-width: 62ch; color: rgba(255,255,255,0.88); }
+
+    .hero__bannerBlend{
+      width: 100vw;
+      max-width: 100%;
+      height: min(52vh, 520px);
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+
+      /* banner as background + edge fade so it blends into site */
+      background-image:
+        radial-gradient(120% 85% at 50% 30%,
+          rgba(0,0,0,0.10) 0%,
+          rgba(0,0,0,0.45) 60%,
+          rgba(0,0,0,0.92) 100%),
+        var(--heroBanner);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      /* subtle unify with site glow */
+      filter: saturate(1.08) contrast(1.05) brightness(1.02);
+    }
+
+    /* bottom feather so it melts into the next content */
+    .hero__bannerBlend::after{
+      content:"";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 34%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.92));
+    }
+
+    .hero__content{
+      padding: 18px 0 22px;
+      text-align: center;
+    }
+
+    .hero__contentInner{
+      position: relative;
+      padding: 14px 12px;
+    }
+
+    /* subtle text glow bubble (not a hard box) */
+    .hero__contentInner::before{
+      content:"";
+      position: absolute;
+      inset: -6px;
+      z-index: -1;
+      background: radial-gradient(60% 120% at 50% 50%,
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0));
+    }
+
+    h1{
+      margin: 0;
+      font-size: clamp(28px, 5vw, 56px);
+      letter-spacing: 0.12em;
+    }
+    .hero__tagline{
+      margin: 10px auto 0;
+      max-width: 62ch;
+      color: rgba(255,255,255,0.88);
+    }
 
     /* SECTIONS */
-    .section{ padding: 42px 0; border-bottom: 1px solid rgba(255,255,255,0.10); }
-    h2{ margin: 0 0 12px; font-size: 22px; letter-spacing: 0.06em; text-align:center; }
-    .muted{ color: var(--muted); text-align:center; margin: 0 0 18px; }
+    .section{
+      padding: 42px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    h2{
+      margin: 0 0 12px;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      text-align:center;
+    }
+    .muted{
+      color: var(--muted);
+      text-align:center;
+      margin: 0 0 18px;
+    }
 
     .panel{
       background: var(--panel);
@@ -167,7 +264,11 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
-    .prose{ max-width: 78ch; margin: 0 auto; padding: 18px; }
+    .prose{
+      max-width: 78ch;
+      margin: 0 auto;
+      padding: 18px;
+    }
     .prose p{ margin: 0 0 12px; }
     .prose p:last-child{ margin-bottom:0; }
 
@@ -265,85 +366,17 @@
     .footer__line{ text-align:center; color: var(--muted); font-size: 14px; }
 
     @media (max-width: 480px){
-      .hero__banner{ height: 38vh; }
+      .hero__bannerBlend{ height: 38vh; }
       .section{ padding: 34px 0; }
     }
+
     @media (max-width: 768px){
       body{ background-attachment: scroll; }
+      body::after{
+        opacity: 0.62;
+        filter: brightness(1.25) contrast(1.18) saturate(1.45) blur(0.4px);
+      }
     }
-
-    /* ===== BACKGROUND: BRIGHTER / MORE GLOWING (KEEP TEXT READABLE) ===== */
-
-/* 1) Make the background image pop */
-body{
-  /* keep your existing settings, just add/replace these lines */
-  background-image: var(--bgImage);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
-
-  /* BOOST the background brightness + glow */
-  position: relative;
-}
-
-/* 2) Add a "glow layer" that brightens and adds neon bloom */
-body::after{
-  content:"";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-
-  /* same image again but treated like a glow overlay */
-  background-image: var(--bgImage);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center top;
-
-  opacity: 0.78;                 /* overall glow strength */
-  mix-blend-mode: screen;        /* makes highlights glow */
-  filter:
-    brightness(1.35)             /* brighter */
-    contrast(1.25)               /* punchier circuitry */
-    saturate(1.55)               /* stronger color */
-    blur(0.6px);                 /* slight bloom */
-}
-
-/* 3) Keep your readability veil but lighten it so glow shows through */
-body::before{
-  content:"";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-
-  /* reduced darkness so the background glows more */
-  background:
-    radial-gradient(1200px 800px at 50% 0%,
-      rgba(0,0,0,0.18),
-      rgba(0,0,0,0.62) 70%),
-    linear-gradient(to bottom,
-      rgba(0,0,0,0.34),
-      rgba(0,0,0,0.72));
-}
-
-/* 4) Make sure CONTENT is above both layers */
-.wrap, main, header, section, footer{
-  position: relative;
-  z-index: 1;
-}
-
-/* 5) Mobile performance: kill fixed + glow layer if it lags */
-@media (max-width: 768px){
-  body{ background-attachment: scroll; }
-  body::after{
-    /* keep glow but slightly lighter for performance */
-    opacity: 0.62;
-    filter: brightness(1.25) contrast(1.18) saturate(1.45) blur(0.4px);
-  }
-}
-
   </style>
 </head>
 
@@ -371,26 +404,22 @@ body::before{
     </div>
   </div>
 
-<!-- MAIN PAGE -->
-<main id="page" class="is-hidden" aria-hidden="true">
+  <!-- MAIN PAGE -->
+  <main id="page" class="is-hidden" aria-hidden="true">
 
-  <header class="hero">
-    <div class="hero__bannerWrap">
-      <img
-        src="assets/sub-fixx-underground-bass-music-cyberpunk-streaming-banner.png"
-        alt="Sub Fixx underground bass music cyberpunk artist banner"
-        loading="eager"
-      />
-    </div>
+    <header class="hero">
+      <div class="hero__bannerBlend" aria-hidden="true"></div>
 
-    <div class="wrap hero__content">
-      <h1>SUB FIXX</h1>
-      <p class="hero__tagline">
-        Emotionally driven underground bass music built for dark rooms, loud systems, and connection.
-      </p>
-    </div>
-  </header>
-    
+      <div class="wrap hero__content">
+        <div class="hero__contentInner">
+          <h1>SUB FIXX</h1>
+          <p class="hero__tagline">
+            Emotionally driven underground bass music built for dark rooms, loud systems, and connection.
+          </p>
+        </div>
+      </div>
+    </header>
+
     <section class="section" id="soundcloud">
       <div class="wrap">
         <h2>SoundCloud</h2>
@@ -435,23 +464,34 @@ body::before{
           <a class="card" href="assets/sub-fixx-home-studio-music-production-dj-workspace.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-home-studio-music-production-dj-workspace.png" alt="Sub Fixx home studio music production workspace" loading="lazy">
           </a>
+
           <a class="card" href="assets/sub-fixx-live-dj-crew-underground-club-performance.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-live-dj-crew-underground-club-performance.png" alt="Sub Fixx live DJ crew underground club performance" loading="lazy">
           </a>
+
           <a class="card" href="assets/sub-fixx-live-dj-performance-music-festival-vinyl-turntables.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-live-dj-performance-music-festival-vinyl-turntables.png" alt="Sub Fixx live DJ performance at a music festival on vinyl turntables" loading="lazy">
           </a>
+
           <a class="card" href="assets/sub-fixx-live-dj-performance-underground-club-pioneer-mixer.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-live-dj-performance-underground-club-pioneer-mixer.png" alt="Sub Fixx live DJ performance in an underground club" loading="lazy">
           </a>
+
           <a class="card" href="assets/sub-fixx-live-dj-set-festival-stage-b2b-underground-music.jpg.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-live-dj-set-festival-stage-b2b-underground-music.jpg.png" alt="Sub Fixx festival stage back-to-back DJ set underground music" loading="lazy">
           </a>
+
           <a class="card" href="assets/sub-fixx-live-dj-set-underground-club-purple-blue-stage-lighting.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-live-dj-set-underground-club-purple-blue-stage-lighting.png" alt="Sub Fixx live DJ set with purple and blue stage lighting" loading="lazy">
           </a>
+
           <a class="card" href="assets/sub-fixx-live-dj-set-underground-nightclub-performance.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-live-dj-set-underground-nightclub-performance.png" alt="Sub Fixx live DJ set underground nightclub performance" loading="lazy">
+          </a>
+
+          <!-- 8th tile to keep the grid even: swap this file later with your new photo -->
+          <a class="card" href="assets/sub-fixx-live-dj-set-underground-nightclub-performance.png" target="_blank" rel="noopener">
+            <img src="assets/sub-fixx-live-dj-set-underground-nightclub-performance.png" alt="Sub Fixx underground DJ photo" loading="lazy">
           </a>
         </div>
       </div>
@@ -530,16 +570,13 @@ body::before{
       const FAILSAFE_MS = 12000; // 12 seconds
       const failsafeTimer = setTimeout(reveal, FAILSAFE_MS);
 
-      // If the file loads and we know the real duration, adjust failsafe
       video.addEventListener("loadedmetadata", () => {
         if (isFinite(video.duration) && video.duration > 0) {
           clearTimeout(failsafeTimer);
-          // duration + 1s buffer
           setTimeout(reveal, Math.ceil(video.duration * 1000) + 1000);
         }
       });
 
-      // Reveal when video finishes or errors
       video.addEventListener("ended", reveal);
       video.addEventListener("error", reveal);
 
@@ -548,25 +585,22 @@ body::before{
           video.muted = true;
           video.playsInline = true;
           await video.play();
-          btn.style.display = "none"; // autoplay worked
+          btn.style.display = "none";
         } catch (e) {
-          btn.style.display = "inline-flex"; // needs user gesture
+          btn.style.display = "inline-flex";
         }
       };
 
-      // Button starts video
       btn.addEventListener("click", async (e) => {
         e.stopPropagation();
         try {
           await video.play();
           btn.style.display = "none";
         } catch (e2) {
-          // If playback still fails, don't stall the site
           reveal();
         }
       });
 
-      // Tap/click anywhere also starts video (prevents "stall")
       overlay.addEventListener("click", async () => {
         try {
           await video.play();
@@ -576,7 +610,6 @@ body::before{
         }
       });
 
-      // Start attempt
       tryPlay();
     })();
   </script>
