@@ -36,13 +36,15 @@
   <main id="page" class="page is-hidden" aria-hidden="true">
     <!-- HERO -->
     <header class="hero">
-      <!-- Replace this banner image filename if yours is different -->
-      <img
-        class="hero__banner"
-        src="assets/sub-fixx-underground-bass-music-logo-lava-background-banner.png"
-        alt="Sub Fixx underground bass music banner"
-        loading="eager"
-      />
+      <div class="hero__bannerWrap">
+        <img
+          class="hero__banner"
+          src="assets/sub-fixx-underground-bass-music-logo-lava-background-banner.png"
+          alt="Sub Fixx underground bass music banner"
+          loading="eager"
+        />
+      </div>
+
       <div class="wrap hero__content">
         <h1>SUB FIXX</h1>
         <p class="hero__tagline">Emotionally driven underground bass music built for dark rooms, loud systems, and connection.</p>
@@ -55,7 +57,6 @@
         <h2>SoundCloud</h2>
         <p class="muted">Listen first on SoundCloud.</p>
 
-        <!-- Replace the iframe src with YOUR SoundCloud embed -->
         <div class="embed">
           <iframe
             title="Sub Fixx on SoundCloud"
@@ -68,7 +69,6 @@
           ></iframe>
         </div>
 
-        <!-- Replace link if you want a specific profile/track URL -->
         <div class="actions">
           <a class="btn" href="https://soundcloud.com/subfixx" target="_blank" rel="noopener">Follow on SoundCloud</a>
         </div>
@@ -80,7 +80,7 @@
       <div class="wrap">
         <h2>Bio</h2>
 
-        <div class="prose">
+        <div class="panel prose">
           <p>
             Sub Fixx is a Canadian drum &amp; bass producer creating emotionally driven underground bass music built for dark rooms, loud systems, and connection.
           </p>
@@ -110,7 +110,6 @@
         <p class="muted">Live, studio, and underground moments.</p>
 
         <div class="grid">
-          <!-- Use JPG/WEBP when possible for faster loading; this will still work with PNG. -->
           <a class="card" href="assets/sub-fixx-home-studio-music-production-dj-workspace.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-home-studio-music-production-dj-workspace.png" alt="Sub Fixx home studio music production workspace" loading="lazy">
           </a>
@@ -159,7 +158,7 @@
     <section class="section" id="labels">
       <div class="wrap">
         <h2>Labels</h2>
-        <ul class="list">
+        <ul class="panel list">
           <li>Stellar Recordings</li>
           <li>Matrix Music Records</li>
           <li>Be Nasty Beats</li>
@@ -175,7 +174,8 @@
     <section class="section" id="releases">
       <div class="wrap">
         <h2>Upcoming Releases</h2>
-        <div class="release-list">
+
+        <div class="panel release-list">
           <div class="release">
             <div class="release__date">2026-01-09</div>
             <div class="release__title">One Thing</div>
@@ -193,8 +193,6 @@
             <div class="release__title">Ocean Drive</div>
           </div>
         </div>
-
-        <!-- Add more releases as needed -->
       </div>
     </section>
 
@@ -208,4 +206,3 @@
   <script src="js/main.js"></script>
 </body>
 </html>
-
