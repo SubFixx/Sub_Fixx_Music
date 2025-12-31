@@ -26,6 +26,7 @@
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+
     body{
       margin:0;
       background-color: var(--bg);
@@ -41,7 +42,6 @@
       text-shadow: var(--txtShadow);
     }
 
-    /* Readability veil so the background never hides text */
     body::before{
       content:"";
       position: fixed;
@@ -60,15 +60,14 @@
       z-index: 1;
     }
 
-    /* INTRO OVERLAY */
+    /* INTRO */
     .intro{
       position: fixed;
       inset: 0;
       z-index: 9999;
       background: #000;
-      display: grid;
-      place-items: center;
       overflow: hidden;
+      display: block;
     }
     .intro__video{
       position: absolute;
@@ -78,21 +77,60 @@
       object-fit: cover;
     }
     .intro__overlay{
-      position: relative;
+      position: absolute;
+      inset: 0;
       z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 18px 16px calc(22px + env(safe-area-inset-bottom, 0px));
+      background: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.78));
+      text-align: center;
+      gap: 10px;
+    }
+    .intro__brand{
       width: min(720px, calc(100% - 28px));
-      padding: 22px 18px;
+      padding: 14px 16px;
       border: 1px solid rgba(255,255,255,0.14);
       border-radius: var(--radius);
-      background: rgba(0,0,0,0.45);
+      background: rgba(0,0,0,0.40);
       backdrop-filter: blur(8px);
       box-shadow: var(--shadow);
-      text-align: center;
     }
-    .intro__brand{ display:flex; flex-direction:column; gap:6px; margin-bottom:12px; }
-    .intro__title{ font-weight: 900; letter-spacing: 0.18em; font-size: clamp(22px, 4.3vw, 40px); }
-    .intro__subtitle{ color: var(--muted); letter-spacing: 0.08em; font-size: 14px; }
-    .intro__button{ margin-top: 10px; }
+    .intro__title{
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      font-size: clamp(20px, 4.2vw, 38px);
+      margin: 0;
+    }
+    .intro__subtitle{
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+    .intro__button{
+      width: min(360px, calc(100% - 28px));
+      margin: 0;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.45);
+      color: var(--text);
+      text-decoration:none;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+    .btn:hover{ background: rgba(0,0,0,0.60); }
+    .btn--ghost{ background: rgba(0,0,0,0.28); }
 
     .intro.is-fading{ animation: fadeOut 520ms ease forwards; }
     @keyframes fadeOut{ to{ opacity:0; visibility:hidden; } }
@@ -102,15 +140,8 @@
     .is-hidden{ display:none !important; }
 
     /* HERO */
-    .hero{
-      border-bottom: 1px solid var(--line);
-      padding-top: 14px;
-    }
-    .hero__bannerWrap{
-      display:flex;
-      justify-content:center; /* CENTER banner on desktop */
-      padding: 0 14px;
-    }
+    .hero{ border-bottom: 1px solid var(--line); padding-top: 14px; }
+    .hero__bannerWrap{ display:flex; justify-content:center; padding: 0 14px; }
     .hero__banner{
       width: min(1200px, 100%);
       height: min(52vh, 520px);
@@ -121,50 +152,25 @@
       border: 1px solid rgba(255,255,255,0.14);
       box-shadow: var(--shadow);
     }
-    .hero__content{
-      padding: 18px 0 22px;
-      text-align:center;
-    }
-    h1{
-      margin: 0;
-      font-size: clamp(28px, 5vw, 56px);
-      letter-spacing: 0.12em;
-    }
-    .hero__tagline{
-      margin: 10px auto 0;
-      max-width: 62ch;
-      color: rgba(255,255,255,0.88);
-    }
+    .hero__content{ padding: 18px 0 22px; text-align:center; }
+    h1{ margin: 0; font-size: clamp(28px, 5vw, 56px); letter-spacing: 0.12em; }
+    .hero__tagline{ margin: 10px auto 0; max-width: 62ch; color: rgba(255,255,255,0.88); }
 
     /* SECTIONS */
-    .section{
-      padding: 42px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-    }
-    h2{
-      margin: 0 0 12px;
-      font-size: 22px;
-      letter-spacing: 0.06em;
-      text-align:center;
-    }
+    .section{ padding: 42px 0; border-bottom: 1px solid rgba(255,255,255,0.10); }
+    h2{ margin: 0 0 12px; font-size: 22px; letter-spacing: 0.06em; text-align:center; }
     .muted{ color: var(--muted); text-align:center; margin: 0 0 18px; }
 
-    /* PANELS */
     .panel{
       background: var(--panel);
       border: 1px solid rgba(255,255,255,0.14);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
-    .prose{
-      max-width: 78ch;
-      margin: 0 auto;
-      padding: 18px;
-    }
+    .prose{ max-width: 78ch; margin: 0 auto; padding: 18px; }
     .prose p{ margin: 0 0 12px; }
     .prose p:last-child{ margin-bottom:0; }
 
-    /* SOUNDCLOUD EMBED */
     .embed{
       margin: 18px auto 0;
       max-width: 980px;
@@ -175,9 +181,9 @@
       box-shadow: var(--shadow);
     }
 
-    /* BUTTONS / LINKS */
     .actions{ display:flex; justify-content:center; margin-top: 14px; }
-    .btn, .pill{
+
+    .pill{
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -189,10 +195,8 @@
       text-decoration:none;
       font-weight: 800;
     }
-    .btn:hover, .pill:hover{ background: rgba(0,0,0,0.55); }
-    .btn--ghost{ background: rgba(0,0,0,0.22); }
+    .pill:hover{ background: rgba(0,0,0,0.55); }
 
-    /* PHOTOS (smaller thumbnails) */
     .grid{
       display:grid;
       gap: 12px;
@@ -221,7 +225,6 @@
       .card img{ height: 170px; }
     }
 
-    /* SOCIAL */
     .links{
       display:flex;
       flex-wrap: wrap;
@@ -229,7 +232,6 @@
       justify-content:center;
     }
 
-    /* LIST */
     .list{
       max-width: 560px;
       margin: 0 auto;
@@ -243,7 +245,6 @@
     }
     .list li:last-child{ border-bottom:none; }
 
-    /* RELEASES */
     .release-list{
       max-width: 640px;
       margin: 0 auto;
@@ -260,20 +261,20 @@
     .release__date{ color: var(--muted); font-variant-numeric: tabular-nums; }
     .release__title{ font-weight: 900; letter-spacing: 0.02em; }
 
-    /* FOOTER */
     footer{ padding: 26px 0 36px; }
     .footer__line{ text-align:center; color: var(--muted); font-size: 14px; }
 
-    /* Mobile tweaks */
     @media (max-width: 480px){
       .hero__banner{ height: 38vh; }
       .section{ padding: 34px 0; }
+    }
+    @media (max-width: 768px){
+      body{ background-attachment: scroll; }
     }
   </style>
 </head>
 
 <body>
-
   <!-- INTRO / LOGO ANIMATION OVERLAY -->
   <div id="intro" class="intro" aria-hidden="false">
     <video
@@ -285,34 +286,38 @@
       preload="auto"
     ></video>
 
-    <div class="intro__overlay">
+    <div id="introOverlay" class="intro__overlay">
       <div class="intro__brand">
         <div class="intro__title">SUB FIXX</div>
         <div class="intro__subtitle">Underground Drum &amp; Bass</div>
       </div>
 
-     
+      <button id="introPlayBtn" class="btn btn--ghost intro__button" type="button">
+        Tap / Click to Start
+      </button>
+    </div>
+  </div>
 
   <!-- MAIN PAGE -->
   <main id="page" class="is-hidden" aria-hidden="true">
-
-    <!-- HERO -->
     <header class="hero">
       <div class="hero__bannerWrap">
         <img
           class="hero__banner"
-         assets/SC Profile Sub Fixx.jpeg"Sub Fixx underground bass music banner"
+          src="assets/sub-fixx-underground-bass-music-logo-lava-background-banner.png"
+          alt="Sub Fixx underground bass music banner"
           loading="eager"
         />
       </div>
 
       <div class="wrap hero__content">
         <h1>SUB FIXX</h1>
-        <p class="hero__tagline">Emotionally driven underground bass music built for dark rooms, loud systems, and real connections, "This is me, This is who I am and this is what I do" Sub Fixx.</p>
+        <p class="hero__tagline">
+          Emotionally driven underground bass music built for dark rooms, loud systems, and connection.
+        </p>
       </div>
     </header>
 
-    <!-- SOUNDCLOUD -->
     <section class="section" id="soundcloud">
       <div class="wrap">
         <h2>SoundCloud</h2>
@@ -336,24 +341,18 @@
       </div>
     </section>
 
-    <!-- BIO -->
     <section class="section" id="bio">
       <div class="wrap">
         <h2>Bio</h2>
-
         <div class="panel prose">
           <p>Sub Fixx is a Canadian drum &amp; bass producer creating emotionally driven underground bass music built for dark rooms, loud systems, and connection.</p>
-
           <p>Rooted in UK bass culture and shaped by years of multi-genre influence, his sound blends weight, tension, and atmosphere with deep low-end pressure. Every track is designed to hit with intent — not just to move bodies, but to pull people into the moment.</p>
-
           <p>The journey started in 1999 with his first set of turntables — long nights digging, learning, and building taste the hard way. After years of experimenting across sounds and scenes, he fully committed in the last couple of years when he switched to drum &amp; bass — a move that became a true game changer and sharpened the direction into something focused, heavy, and honest.</p>
-
           <p>This is music for immersive dancefloors, late nights, and shared energy.</p>
         </div>
       </div>
     </section>
 
-    <!-- PHOTOS -->
     <section class="section" id="photos">
       <div class="wrap">
         <h2>Photos</h2>
@@ -363,27 +362,21 @@
           <a class="card" href="assets/sub-fixx-home-studio-music-production-dj-workspace.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-home-studio-music-production-dj-workspace.png" alt="Sub Fixx home studio music production workspace" loading="lazy">
           </a>
-
           <a class="card" href="assets/sub-fixx-live-dj-crew-underground-club-performance.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-live-dj-crew-underground-club-performance.png" alt="Sub Fixx live DJ crew underground club performance" loading="lazy">
           </a>
-
           <a class="card" href="assets/sub-fixx-live-dj-performance-music-festival-vinyl-turntables.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-live-dj-performance-music-festival-vinyl-turntables.png" alt="Sub Fixx live DJ performance at a music festival on vinyl turntables" loading="lazy">
           </a>
-
           <a class="card" href="assets/sub-fixx-live-dj-performance-underground-club-pioneer-mixer.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-live-dj-performance-underground-club-pioneer-mixer.png" alt="Sub Fixx live DJ performance in an underground club" loading="lazy">
           </a>
-
           <a class="card" href="assets/sub-fixx-live-dj-set-festival-stage-b2b-underground-music.jpg.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-live-dj-set-festival-stage-b2b-underground-music.jpg.png" alt="Sub Fixx festival stage back-to-back DJ set underground music" loading="lazy">
           </a>
-
           <a class="card" href="assets/sub-fixx-live-dj-set-underground-club-purple-blue-stage-lighting.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-live-dj-set-underground-club-purple-blue-stage-lighting.png" alt="Sub Fixx live DJ set with purple and blue stage lighting" loading="lazy">
           </a>
-
           <a class="card" href="assets/sub-fixx-live-dj-set-underground-nightclub-performance.png" target="_blank" rel="noopener">
             <img src="assets/sub-fixx-live-dj-set-underground-nightclub-performance.png" alt="Sub Fixx live DJ set underground nightclub performance" loading="lazy">
           </a>
@@ -391,11 +384,9 @@
       </div>
     </section>
 
-    <!-- SOCIAL -->
     <section class="section" id="social">
       <div class="wrap">
         <h2>Social</h2>
-
         <div class="links">
           <a class="pill" href="https://soundcloud.com/subfixx" target="_blank" rel="noopener">SoundCloud</a>
           <a class="pill" href="https://www.facebook.com/Subfixx" target="_blank" rel="noopener">Facebook (Sub Fixx)</a>
@@ -404,7 +395,6 @@
       </div>
     </section>
 
-    <!-- LABELS -->
     <section class="section" id="labels">
       <div class="wrap">
         <h2>Labels</h2>
@@ -420,28 +410,14 @@
       </div>
     </section>
 
-    <!-- UPCOMING RELEASES -->
     <section class="section" id="releases">
       <div class="wrap">
         <h2>Upcoming Releases</h2>
-
         <div class="panel release-list">
-          <div class="release">
-            <div class="release__date">2026-01-09</div>
-            <div class="release__title">One Thing</div>
-          </div>
-          <div class="release">
-            <div class="release__date">2026-01-23</div>
-            <div class="release__title">Get a Reaction</div>
-          </div>
-          <div class="release">
-            <div class="release__date">2026-02-06</div>
-            <div class="release__title">Popular Monster</div>
-          </div>
-          <div class="release">
-            <div class="release__date">2026-02-20</div>
-            <div class="release__title">Ocean Drive</div>
-          </div>
+          <div class="release"><div class="release__date">2026-01-09</div><div class="release__title">One Thing</div></div>
+          <div class="release"><div class="release__date">2026-01-23</div><div class="release__title">Get a Reaction</div></div>
+          <div class="release"><div class="release__date">2026-02-06</div><div class="release__title">Popular Monster</div></div>
+          <div class="release"><div class="release__date">2026-02-20</div><div class="release__title">Ocean Drive</div></div>
         </div>
       </div>
     </section>
@@ -451,12 +427,12 @@
         <div class="footer__line">© <span id="year"></span> Sub Fixx</div>
       </div>
     </footer>
-
   </main>
 
   <script>
     (() => {
       const intro = document.getElementById("intro");
+      const overlay = document.getElementById("introOverlay");
       const page = document.getElementById("page");
       const video = document.getElementById("introVideo");
       const btn = document.getElementById("introPlayBtn");
@@ -464,7 +440,11 @@
 
       year.textContent = new Date().getFullYear();
 
-      const showPage = () => {
+      let revealed = false;
+      const reveal = () => {
+        if (revealed) return;
+        revealed = true;
+
         intro.classList.add("is-fading");
         setTimeout(() => {
           intro.style.display = "none";
@@ -473,30 +453,58 @@
         }, 520);
       };
 
-      const tryAutoplay = async () => {
+      // FAILSAFE: if video doesn't end for any reason, reveal anyway.
+      const FAILSAFE_MS = 12000; // 12 seconds
+      const failsafeTimer = setTimeout(reveal, FAILSAFE_MS);
+
+      // If the file loads and we know the real duration, adjust failsafe
+      video.addEventListener("loadedmetadata", () => {
+        if (isFinite(video.duration) && video.duration > 0) {
+          clearTimeout(failsafeTimer);
+          // duration + 1s buffer
+          setTimeout(reveal, Math.ceil(video.duration * 1000) + 1000);
+        }
+      });
+
+      // Reveal when video finishes or errors
+      video.addEventListener("ended", reveal);
+      video.addEventListener("error", reveal);
+
+      const tryPlay = async () => {
         try {
           video.muted = true;
           video.playsInline = true;
           await video.play();
-          btn.style.display = "none";
+          btn.style.display = "none"; // autoplay worked
         } catch (e) {
-          btn.style.display = "inline-flex";
+          btn.style.display = "inline-flex"; // needs user gesture
         }
       };
 
-      video.addEventListener("ended", showPage);
-      video.addEventListener("error", showPage);
+      // Button starts video
+      btn.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        try {
+          await video.play();
+          btn.style.display = "none";
+        } catch (e2) {
+          // If playback still fails, don't stall the site
+          reveal();
+        }
+      });
 
-      btn.addEventListener("click", async () => {
+      // Tap/click anywhere also starts video (prevents "stall")
+      overlay.addEventListener("click", async () => {
         try {
           await video.play();
           btn.style.display = "none";
         } catch (e) {
-          showPage();
+          reveal();
         }
       });
 
-      tryAutoplay();
+      // Start attempt
+      tryPlay();
     })();
   </script>
 </body>
