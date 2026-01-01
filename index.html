@@ -18,18 +18,26 @@
 
       --shadow: 0 14px 34px rgba(0,0,0,0.70);
       --radius: 18px;
+
+      /* CONTENT WIDTH */
       --wrap: 980px;
 
       --txtShadow: 0 2px 10px rgba(0,0,0,0.90);
 
-      /* NEW BACKGROUND IMAGE */
+      /* BACKGROUND IMAGE */
       --bgImage: url("assets/sub-fixx-underground-bass-music-website-background.png");
 
-      --heroBannerImg: "assets/sub-fixx-underground-bass-music-logo-transparent_web_fire.png";
+      /* HERO LOGO */
+      --heroLogoMaxWDesktop: 520px;   /* BIGGER TOP LOGO */
+      --heroLogoMaxWMobile: 380px;
 
-      /* HERO BANNER HEIGHT (about 25% shorter) */
-      --heroMaxHDesktop: 360px;
-      --heroMaxHMobile: 260px;
+      /* SOUNDCloud EMBED WIDTH (NARROWER / UNIFORM) */
+      --embedMaxWDesktop: 840px;
+      --embedMaxWMobile: 96vw;
+
+      /* TEXT SCALE */
+      --baseFontScale: 150%;         /* keep your current overall scale */
+      --underEmbedScale: 1.30;       /* +30% for the follow button / under-embed area */
     }
 
     *{ box-sizing:border-box; }
@@ -42,8 +50,8 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       line-height:1.45;
 
-      /* GLOBAL 25% TEXT INCREASE */
-      font-size: 150%;
+      /* GLOBAL TEXT SCALE (your existing setting) */
+      font-size: var(--baseFontScale);
 
       text-shadow: var(--txtShadow);
 
@@ -70,7 +78,6 @@
           rgba(0,0,0,0.28),
           rgba(0,0,0,0.70));
     }
-
 
     /* content above */
     .wrap, main, header, section, footer{ position: relative; z-index: 1; }
@@ -161,41 +168,38 @@
 
     /* HERO */
     .hero{
-      padding-top: 75px;
+      padding-top: 54px;
       text-align: center;
     }
 
+    /* ADD: banner frame so logo sizes consistently */
+    .hero__bannerFrame{
+      width: min(var(--wrap), calc(100% - 28px));
+      margin: 0 auto;
+      padding: 18px 0 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
+    /* BIGGER LOGO, NO DISTORTION */
     .hero__bannerImg{
-      width: 100%;
+      width: min(var(--heroLogoMaxWDesktop), 92vw);
       height: auto;
-      max-height: var(--heroMaxHDesktop);
-      object-fit: contain;
       display: block;
-      border-radius: 16px;
-
-      -webkit-mask-image: linear-gradient(to left,
-        rgba(0,0,0,0.78) 0%,
-        rgba(0,0,0,1.00) 10%,
-        rgba(0,0,0,1.00) 90%,
-        rgba(0,0,0,0.78) 100%);
-      mask-image: linear-gradient(to left,
-        rgba(0,0,0,0.78) 0%,
-        rgba(0,0,0,1.00) 10%,
-        rgba(0,0,0,1.00) 90%,
-        rgba(0,0,0,0.78) 100%);
+      object-fit: contain;
       filter: saturate(1.12) contrast(1.08) brightness(1.05);
     }
 
     .hero__content{
-      padding: 16px 0 14px;
+      padding: 12px 0 12px;
       text-align: center;
     }
 
     .hero__contentInner{
       position: relative;
       display: inline-block;
-      padding: 14px 14px;
+      padding: 10px 14px;
       max-width: min(920px, calc(100% - 28px));
     }
 
@@ -255,9 +259,10 @@
     .prose p{ margin: 0 0 12px; }
     .prose p:last-child{ margin-bottom:0; }
 
+    /* NARROWER SOUNDCLOUD EMBED */
     .embed{
       margin: 18px auto 0;
-      max-width: 980px;
+      width: min(var(--embedMaxWDesktop), calc(100% - 0px));
       background: var(--panel2);
       border: 1px solid rgba(255,255,255,0.14);
       border-radius: var(--radius);
@@ -265,22 +270,14 @@
       box-shadow: var(--shadow);
     }
 
-    .actions{ display:flex; justify-content:center; margin-top: 14px; }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
+    /* UNDER-EMBED AREA (FOLLOW BUTTON) +30% */
+    .actions{
+      display:flex;
       justify-content:center;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.40);
-      color: var(--text);
-      text-decoration:none;
-      font-weight: 800;
-      font-size: 15px;
+      margin-top: 14px;
+      transform: scale(var(--underEmbedScale));
+      transform-origin: top center;
     }
-    .pill:hover{ background: rgba(0,0,0,0.55); }
 
     .grid{
       display:grid;
@@ -316,6 +313,21 @@
       gap: 12px;
       justify-content:center;
     }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.40);
+      color: var(--text);
+      text-decoration:none;
+      font-weight: 800;
+      font-size: 15px;
+    }
+    .pill:hover{ background: rgba(0,0,0,0.55); }
 
     .list{
       max-width: 560px;
@@ -373,17 +385,15 @@
 
     @media (max-width: 480px){
       .section{ padding: 34px 0; }
-      .hero{ padding-top: 14px; }
-      .hero__bannerFrame{ padding: 12px 10px 8px; }
-      .hero__bannerImg{ max-height: var(--heroMaxHMobile); }
+      .hero{ padding-top: 18px; }
+      .hero__bannerFrame{ padding: 14px 0 8px; }
+      .hero__bannerImg{ width: min(var(--heroLogoMaxWMobile), 92vw); }
+      .embed{ width: min(var(--embedMaxWMobile), 100%); }
+      .actions{ transform: scale(1.18); } /* slightly less aggressive on tiny screens */
     }
 
     @media (max-width: 768px){
       body{ background-attachment: scroll; }
-      body::after{
-        opacity: 0.78;
-        filter: brightness(1.45) contrast(1.25) saturate(1.60) blur(0.35px);
-      }
     }
   </style>
 </head>
@@ -420,7 +430,6 @@
           class="hero__bannerImg"
           src="assets/sub-fixx-underground-bass-music-logo-transparent_web_fire.png"
           alt="Sub Fixx underground bass music cyberpunk streaming banner"
-        
         />
       </div>
 
@@ -504,7 +513,6 @@
             <img src="assets/sub-fixx-live-dj-set-underground-nightclub-performance.png" alt="Sub Fixx live DJ set underground nightclub performance" loading="lazy">
           </a>
 
-          <!-- 8th tile placeholder: replace with your new photo when ready -->
           <a class="card" href="assets/Subfix DJ Halloween 2012.jpg" target="_blank" rel="noopener">
             <img src="assets/Subfix DJ Halloween 2012.jpg" alt="Sub Fixx underground DJ photo" loading="lazy">
           </a>
@@ -551,7 +559,6 @@
       </div>
     </section>
 
-    <!-- NEW CONTACT / BOOKING SECTION -->
     <section class="section" id="contact">
       <div class="wrap">
         <h2>Contact / Booking</h2>
