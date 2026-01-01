@@ -3,688 +3,42 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sub Fixx | Underground Drum & Bass</title>
-  <meta name="description" content="Sub Fixx is a Canadian drum & bass producer creating emotionally driven underground bass music built for dark rooms, loud systems, and connection." />
 
-  <style>
-    :root{
-      --bg: #000;
-      --text: rgba(255,255,255,0.94);
-      --muted: rgba(255,255,255,0.72);
-      --line: rgba(255,255,255,0.14);
+  <!-- SEO: Improved title + meta description -->
+  <title>Sub Fixx | Underground Drum &amp; Bass Producer &amp; DJ</title>
+  <meta name="description" content="Sub Fixx is a Canadian underground drum &amp; bass producer and DJ creating emotionally driven bass music for dark rooms, loud systems, and connection. Stream, book, and contact here." />
 
-      --panel: rgba(0,0,0,0.62);
-      --panel2: rgba(0,0,0,0.72);
+  <!-- SEO: Social previews -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sub Fixx | Underground Drum &amp; Bass Producer &amp; DJ" />
+  <meta property="og:description" content="Canadian underground drum &amp; bass producer and DJ. Emotionally driven bass music for dark rooms, loud systems, and connection." />
+  <meta property="og:image" content="assets/sub-fixx-underground-bass-music-cyberpunk-streaming-banner.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sub Fixx | Underground Drum &amp; Bass Producer &amp; DJ" />
+  <meta name="twitter:description" content="Canadian underground drum &amp; bass producer and DJ. Stream, book, and contact." />
+  <meta name="twitter:image" content="assets/sub-fixx-underground-bass-music-cyberpunk-streaming-banner.png" />
 
-      --shadow: 0 14px 34px rgba(0,0,0,0.70);
-      --radius: 18px;
-      --wrap: 980px;
-
-      --txtShadow: 0 2px 10px rgba(0,0,0,0.90);
-
-      /* NEW BACKGROUND IMAGE */
-      --bgImage: url("assets/sub-fixx-underground-bass-music-website-background-streaming-platforms.png");
-
-      --heroBannerImg: "assets/sub-fixx-underground-bass-music-cyberpunk-streaming-banner.png";
-
-      /* GLOBAL TEXT SCALE */
-      --fontScale: 1.15;
-
-      /* HERO BANNER HEIGHT (about 25% shorter) */
-      --heroMaxHDesktop: 360px;
-      --heroMaxHMobile: 260px;
+  <!-- SEO: Structured data (MusicGroup schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Sub Fixx",
+    "alternateName": ["SubFixx"],
+    "genre": ["Drum and Bass", "Underground Bass Music"],
+    "email": "subfixx@live.ca",
+    "sameAs": [
+      "https://soundcloud.com/subfixx",
+      "https://www.facebook.com/Subfixx",
+      "https://www.facebook.com/dyrtiesoundrecords"
+    ],
+    "memberOf": {
+      "@type": "Organization",
+      "name": "DSP Records",
+      "email": "dyrtiesound@live.ca"
     }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-
-    body{
-      margin:0;
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height:1.45;
-      text-shadow: var(--txtShadow);
-
-      background-image: var(--bgImage);
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center top;
-      background-attachment: fixed;
-      position: relative;
-
-      /* boosts most body text by 15% */
-      font-size: calc(16px * var(--fontScale));
-    }
-
-    /* readability veil */
-    body::before{
-      content:"";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background:
-        radial-gradient(1200px 800px at 50% 0%,
-          rgba(0,0,0,0.12),
-          rgba(0,0,0,0.62) 72%),
-        linear-gradient(to bottom,
-          rgba(0,0,0,0.28),
-          rgba(0,0,0,0.70));
-    }
-
-    /* glow boost layer */
-    body::after{
-      content:"";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-
-      background-image: var(--bgImage);
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center top;
-
-      opacity: 0.92;
-      mix-blend-mode: screen;
-      filter: brightness(1.55) contrast(1.32) saturate(1.70) blur(0.45px);
-    }
-
-    /* content above */
-    .wrap, main, header, section, footer{ position: relative; z-index: 1; }
-
-    .wrap{
-      width: min(var(--wrap), calc(100% - 28px));
-      margin: 0 auto;
-    }
-
-    /* INTRO */
-    .intro{
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: #000;
-      overflow: hidden;
-      display: block;
-    }
-    .intro__video{
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .intro__overlay{
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 18px 16px calc(22px + env(safe-area-inset-bottom, 0px));
-      background: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.78));
-      text-align: center;
-      gap: 10px;
-    }
-    .intro__brand{
-      width: min(720px, calc(100% - 28px));
-      padding: 14px 16px;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: var(--radius);
-      background: rgba(0,0,0,0.40);
-      backdrop-filter: blur(8px);
-      box-shadow: var(--shadow);
-    }
-    .intro__title{
-      font-weight: 900;
-      letter-spacing: 0.18em;
-      font-size: clamp(
-        calc(20px * var(--fontScale)),
-        calc(4.2vw * var(--fontScale)),
-        calc(38px * var(--fontScale))
-      );
-      margin: 0;
-    }
-    .intro__subtitle{
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      font-size: calc(14px * var(--fontScale));
-      margin-top: 6px;
-    }
-    .intro__button{
-      width: min(360px, calc(100% - 28px));
-      margin: 0;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: calc(12px * var(--fontScale)) calc(16px * var(--fontScale));
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.45);
-      color: var(--text);
-      text-decoration:none;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      font-size: calc(16px * var(--fontScale));
-    }
-    .btn:hover{ background: rgba(0,0,0,0.60); }
-    .btn--ghost{ background: rgba(0,0,0,0.28); }
-
-    .intro.is-fading{ animation: fadeOut 520ms ease forwards; }
-    @keyframes fadeOut{ to{ opacity:0; visibility:hidden; } }
-
-    /* PAGE */
-    main{ position: relative; z-index: 1; }
-    .is-hidden{ display:none !important; }
-
-    /* HERO */
-    .hero{
-      padding-top: 22px;
-      text-align: center;
-    }
-
-    .hero__bannerFrame{
-      width: min(1400px, calc(100% - 24px));
-      margin: 0 auto;
-      padding: 14px 14px 10px;
-      border-radius: 20px;
-      background: rgba(0,0,0,0.28);
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(2px);
-    }
-
-    .hero__bannerImg{
-      width: 100%;
-      height: auto;
-      max-height: var(--heroMaxHDesktop); /* ~25% shorter */
-      object-fit: contain;
-      display: block;
-      border-radius: 16px;
-
-      -webkit-mask-image: linear-gradient(to left,
-        rgba(0,0,0,0.78) 0%,
-        rgba(0,0,0,1.00) 10%,
-        rgba(0,0,0,1.00) 90%,
-        rgba(0,0,0,0.78) 100%);
-      mask-image: linear-gradient(to left,
-        rgba(0,0,0,0.78) 0%,
-        rgba(0,0,0,1.00) 10%,
-        rgba(0,0,0,1.00) 90%,
-        rgba(0,0,0,0.78) 100%);
-      filter: saturate(1.12) contrast(1.08) brightness(1.05);
-    }
-
-    .hero__content{
-      padding: 16px 0 14px;
-      text-align: center;
-    }
-
-    .hero__contentInner{
-      position: relative;
-      display: inline-block;
-      padding: 14px 14px;
-      max-width: min(920px, calc(100% - 28px));
-    }
-
-    .hero__contentInner::before{
-      content:"";
-      position: absolute;
-      inset: -8px;
-      z-index: -1;
-      background: radial-gradient(60% 120% at 50% 50%,
-        rgba(0,0,0,0.62),
-        rgba(0,0,0,0));
-    }
-
-    h1{
-      margin: 0;
-      font-size: clamp(
-        calc(28px * var(--fontScale)),
-        calc(5vw * var(--fontScale)),
-        calc(56px * var(--fontScale))
-      );
-      letter-spacing: 0.12em;
-    }
-
-    .hero__tagline{
-      margin: 10px auto 0;
-      max-width: 62ch;
-      color: rgba(255,255,255,0.88);
-      font-size: calc(16px * var(--fontScale));
-    }
-
-    /* SECTIONS */
-    .section{
-      padding: 42px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-    }
-    h2{
-      margin: 0 0 12px;
-      font-size: calc(22px * var(--fontScale));
-      letter-spacing: 0.06em;
-      text-align:center;
-    }
-    .muted{
-      color: var(--muted);
-      text-align:center;
-      margin: 0 0 18px;
-      font-size: calc(16px * var(--fontScale));
-    }
-
-    .panel{
-      background: var(--panel);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .prose{
-      max-width: 78ch;
-      margin: 0 auto;
-      padding: 18px;
-      font-size: calc(16px * var(--fontScale));
-    }
-    .prose p{ margin: 0 0 12px; }
-    .prose p:last-child{ margin-bottom:0; }
-
-    .embed{
-      margin: 18px auto 0;
-      max-width: 980px;
-      background: var(--panel2);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: var(--radius);
-      overflow:hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .actions{ display:flex; justify-content:center; margin-top: 14px; }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: calc(10px * var(--fontScale)) calc(14px * var(--fontScale));
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.40);
-      color: var(--text);
-      text-decoration:none;
-      font-weight: 800;
-      font-size: calc(15px * var(--fontScale));
-    }
-    .pill:hover{ background: rgba(0,0,0,0.55); }
-
-    .grid{
-      display:grid;
-      gap: 12px;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    }
-    .card{
-      border-radius: 14px;
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(0,0,0,0.35);
-      box-shadow: var(--shadow);
-      display:block;
-    }
-    .card img{
-      width:100%;
-      height: 140px;
-      object-fit: cover;
-      display:block;
-    }
-    @media (min-width: 720px){
-      .grid{ grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
-      .card img{ height: 160px; }
-    }
-    @media (min-width: 1024px){
-      .grid{ grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
-      .card img{ height: 170px; }
-    }
-
-    .links{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content:center;
-    }
-
-    .list{
-      max-width: 560px;
-      margin: 0 auto;
-      padding: 12px 18px;
-      list-style: none;
-      font-size: calc(16px * var(--fontScale));
-    }
-    .list li{
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-      text-align:center;
-    }
-    .list li:last-child{ border-bottom:none; }
-
-    .release-list{
-      max-width: 640px;
-      margin: 0 auto;
-      overflow:hidden;
-      font-size: calc(16px * var(--fontScale));
-    }
-    .release{
-      display:flex;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 12px 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-    }
-    .release:last-child{ border-bottom:none; }
-    .release__date{ color: var(--muted); font-variant-numeric: tabular-nums; }
-    .release__title{ font-weight: 900; letter-spacing: 0.02em; }
-
-    /* CONTACT */
-    .contactBox{
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 18px;
-      text-align: center;
-    }
-    .contactBox a{
-      color: rgba(255,255,255,0.92);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.22);
-    }
-    .contactBox a:hover{
-      border-bottom-color: rgba(255,255,255,0.55);
-    }
-    .contactLine{
-      margin: 10px 0 0;
-      color: var(--muted);
-    }
-
-    footer{ padding: 26px 0 36px; }
-    .footer__line{ text-align:center; color: var(--muted); font-size: calc(14px * var(--fontScale)); }
-
-    @media (max-width: 480px){
-      .section{ padding: 34px 0; }
-      .hero{ padding-top: 14px; }
-      .hero__bannerFrame{ padding: 12px 10px 8px; }
-      .hero__bannerImg{ max-height: var(--heroMaxHMobile); }
-    }
-
-    @media (max-width: 768px){
-      body{ background-attachment: scroll; }
-      body::after{
-        opacity: 0.78;
-        filter: brightness(1.45) contrast(1.25) saturate(1.60) blur(0.35px);
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- INTRO / LOGO ANIMATION OVERLAY -->
-  <div id="intro" class="intro" aria-hidden="false">
-    <video
-      id="introVideo"
-      class="intro__video"
-      src="assets/sub-fixx-underground-bass-music-logo-lava-background-animation.mp4"
-      playsinline
-      muted
-      preload="auto"
-    ></video>
-
-    <div id="introOverlay" class="intro__overlay">
-      <div class="intro__brand">
-        <div class="intro__title">SUB FIXX</div>
-        <div class="intro__subtitle">Underground Drum &amp; Bass</div>
-      </div>
-
-      <button id="introPlayBtn" class="btn btn--ghost intro__button" type="button">
-        Tap / Click to Start
-      </button>
-    </div>
-  </div>
-
-  <!-- MAIN PAGE -->
-  <main id="page" class="is-hidden" aria-hidden="true">
-    <header class="hero">
-      <div class="hero__bannerFrame">
-        <img
-          class="hero__bannerImg"
-          src="assets/sub-fixx-underground-bass-music-cyberpunk-streaming-banner.png"
-          alt="Sub Fixx underground bass music cyberpunk streaming banner"
-          loading="eager"
-        />
-      </div>
-
-      <div class="wrap hero__content">
-        <div class="hero__contentInner">
-          <h1>SUB FIXX</h1>
-          <p class="hero__tagline">
-            Emotionally driven underground bass music built for dark rooms, loud systems, and connection.
-          </p>
-        </div>
-      </div>
-    </header>
-
-    <section class="section" id="soundcloud">
-      <div class="wrap">
-        <h2>SoundCloud</h2>
-        <p class="muted">Listen first on SoundCloud.</p>
-
-        <div class="embed">
-          <iframe
-            title="Sub Fixx on SoundCloud"
-            width="100%"
-            height="300"
-            scrolling="no"
-            frameborder="no"
-            allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/subfixx&color=%230c5444&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-          ></iframe>
-        </div>
-
-        <div class="actions">
-          <a class="btn" href="https://soundcloud.com/subfixx" target="_blank" rel="noopener">Follow on SoundCloud</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="bio">
-      <div class="wrap">
-        <h2>Bio</h2>
-        <div class="panel prose">
-          <p>Sub Fixx is a Canadian drum &amp; bass producer creating emotionally driven underground bass music built for dark rooms, loud systems, and connection.</p>
-          <p>Rooted in UK bass culture and shaped by years of multi-genre influence, his sound blends weight, tension, and atmosphere with deep low-end pressure. Every track is designed to hit with intent — not just to move bodies, but to pull people into the moment.</p>
-          <p>The journey started in 1999 with his first set of turntables — long nights digging, learning, and building taste the hard way. After years of experimenting across sounds and scenes, he fully committed in the last couple of years when he switched to drum &amp; bass — a move that became a true game changer and sharpened the direction into something focused, heavy, and honest.</p>
-          <p>This is music for immersive dancefloors, late nights, and shared energy.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="photos">
-      <div class="wrap">
-        <h2>Photos</h2>
-        <p class="muted">Live, studio, and underground moments.</p>
-
-        <div class="grid">
-          <a class="card" href="assets/sub-fixx-home-studio-music-production-dj-workspace.png" target="_blank" rel="noopener">
-            <img src="assets/sub-fixx-home-studio-music-production-dj-workspace.png" alt="Sub Fixx home studio music production workspace" loading="lazy">
-          </a>
-
-          <a class="card" href="assets/sub-fixx-live-dj-crew-underground-club-performance.png" target="_blank" rel="noopener">
-            <img src="assets/sub-fixx-live-dj-crew-underground-club-performance.png" alt="Sub Fixx live DJ crew underground club performance" loading="lazy">
-          </a>
-
-          <a class="card" href="assets/sub-fixx-live-dj-performance-music-festival-vinyl-turntables.png" target="_blank" rel="noopener">
-            <img src="assets/sub-fixx-live-dj-performance-music-festival-vinyl-turntables.png" alt="Sub Fixx live DJ performance at a music festival on vinyl turntables" loading="lazy">
-          </a>
-
-          <a class="card" href="assets/sub-fixx-live-dj-performance-underground-club-pioneer-mixer.png" target="_blank" rel="noopener">
-            <img src="assets/sub-fixx-live-dj-performance-underground-club-pioneer-mixer.png" alt="Sub Fixx live DJ performance in an underground club" loading="lazy">
-          </a>
-
-          <a class="card" href="assets/sub-fixx-live-dj-set-festival-stage-b2b-underground-music.jpg.png" target="_blank" rel="noopener">
-            <img src="assets/sub-fixx-live-dj-set-festival-stage-b2b-underground-music.jpg.png" alt="Sub Fixx festival stage back-to-back DJ set underground music" loading="lazy">
-          </a>
-
-          <a class="card" href="assets/sub-fixx-live-dj-set-underground-club-purple-blue-stage-lighting.png" target="_blank" rel="noopener">
-            <img src="assets/sub-fixx-live-dj-set-underground-club-purple-blue-stage-lighting.png" alt="Sub Fixx live DJ set with purple and blue stage lighting" loading="lazy">
-          </a>
-
-          <a class="card" href="assets/sub-fixx-live-dj-set-underground-nightclub-performance.png" target="_blank" rel="noopener">
-            <img src="assets/sub-fixx-live-dj-set-underground-nightclub-performance.png" alt="Sub Fixx live DJ set underground nightclub performance" loading="lazy">
-          </a>
-
-          <!-- 8th tile placeholder: replace with your new photo when ready -->
-          <a class="card" href="assets/sub-fixx-live-dj-set-underground-nightclub-performance.png" target="_blank" rel="noopener">
-            <img src="assets/sub-fixx-live-dj-set-underground-nightclub-performance.png" alt="Sub Fixx underground DJ photo" loading="lazy">
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="social">
-      <div class="wrap">
-        <h2>Social</h2>
-        <div class="links">
-          <a class="pill" href="https://soundcloud.com/subfixx" target="_blank" rel="noopener">SoundCloud</a>
-          <a class="pill" href="https://www.facebook.com/Subfixx" target="_blank" rel="noopener">Facebook (Sub Fixx)</a>
-          <a class="pill" href="https://www.facebook.com/dyrtiesoundrecords" target="_blank" rel="noopener">Facebook (DSP Records)</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="labels">
-      <div class="wrap">
-        <h2>Labels</h2>
-        <ul class="panel list">
-          <li>Stellar Recordings</li>
-          <li>Matrix Music Records</li>
-          <li>Be Nasty Beats</li>
-          <li>Bad Music Records</li>
-          <li>Wolf Rage Recordings</li>
-          <li>Gangster House Records</li>
-          <li>DSP Records</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" id="releases">
-      <div class="wrap">
-        <h2>Upcoming Releases</h2>
-        <div class="panel release-list">
-          <div class="release"><div class="release__date">2026-01-09</div><div class="release__title">One Thing</div></div>
-          <div class="release"><div class="release__date">2026-01-23</div><div class="release__title">Get a Reaction</div></div>
-          <div class="release"><div class="release__date">2026-02-06</div><div class="release__title">Popular Monster</div></div>
-          <div class="release"><div class="release__date">2026-02-20</div><div class="release__title">Ocean Drive</div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- NEW CONTACT / BOOKING SECTION -->
-    <section class="section" id="contact">
-      <div class="wrap">
-        <h2>Contact / Booking</h2>
-        <p class="muted">For bookings, collabs, demos, and label inquiries.</p>
-
-        <div class="panel contactBox">
-          <div><strong>Sub Fixx</strong> — <a href="mailto:subfixx@live.ca">subfixx@live.ca</a></div>
-          <p class="contactLine"><strong>DSP Records</strong> — <a href="mailto:dyrtiesound@live.ca">dyrtiesound@live.ca</a></p>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="wrap">
-        <div class="footer__line">© <span id="year"></span> Sub Fixx</div>
-      </div>
-    </footer>
-  </main>
-
-  <script>
-    (() => {
-      const intro = document.getElementById("intro");
-      const overlay = document.getElementById("introOverlay");
-      const page = document.getElementById("page");
-      const video = document.getElementById("introVideo");
-      const btn = document.getElementById("introPlayBtn");
-      const year = document.getElementById("year");
-
-      year.textContent = new Date().getFullYear();
-
-      let revealed = false;
-      const reveal = () => {
-        if (revealed) return;
-        revealed = true;
-        intro.classList.add("is-fading");
-        setTimeout(() => {
-          intro.style.display = "none";
-          page.classList.remove("is-hidden");
-          page.setAttribute("aria-hidden", "false");
-        }, 520);
-      };
-
-      const FAILSAFE_MS = 12000;
-      let failsafeTimer = setTimeout(reveal, FAILSAFE_MS);
-
-      video.addEventListener("loadedmetadata", () => {
-        if (isFinite(video.duration) && video.duration > 0) {
-          clearTimeout(failsafeTimer);
-          failsafeTimer = setTimeout(reveal, Math.ceil(video.duration * 1000) + 700);
-        }
-      });
-
-      video.addEventListener("ended", reveal);
-      video.addEventListener("error", reveal);
-
-      const tryPlay = async () => {
-        try {
-          video.muted = true;
-          video.playsInline = true;
-          await video.play();
-          btn.style.display = "none";
-        } catch {
-          btn.style.display = "inline-flex";
-        }
-      };
-
-      btn.addEventListener("click", async (e) => {
-        e.stopPropagation();
-        try {
-          await video.play();
-          btn.style.display = "none";
-        } catch {
-          reveal();
-        }
-      });
-
-      overlay.addEventListener("click", async () => {
-        try {
-          await video.play();
-          btn.style.display = "none";
-        } catch {
-          reveal();
-        }
-      });
-
-      tryPlay();
-    })();
+  }
   </script>
-</body>
-</html>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sub Fixx | Underground Drum & Bass</title>
-  <meta name="description" content="Sub Fixx is a Canadian drum & bass producer creating emotionally driven underground bass music built for dark rooms, loud systems, and connection." />
 
   <style>
     :root{
@@ -767,6 +121,19 @@
       margin: 0 auto;
     }
 
+    /* SEO: visually hidden helper */
+    .visually-hidden{
+      position:absolute !important;
+      width:1px !important;
+      height:1px !important;
+      padding:0 !important;
+      margin:-1px !important;
+      overflow:hidden !important;
+      clip: rect(0,0,0,0) !important;
+      white-space: nowrap !important;
+      border:0 !important;
+    }
+
     /* INTRO */
     .intro{
       position: fixed;
@@ -846,16 +213,16 @@
     main{ position: relative; z-index: 1; }
     .is-hidden{ display:none !important; }
 
-    /* HERO (fix alignment + keep full banner visible) */
+    /* HERO */
     .hero{
-      padding-top: 22px;          /* top padding to sit inside circuitry border */
+      padding-top: 22px;
       text-align: center;
     }
 
     .hero__bannerFrame{
       width: min(1400px, calc(100% - 24px));
       margin: 0 auto;
-      padding: 18px 14px 10px;    /* breathing room inside border */
+      padding: 14px 14px 10px;
       border-radius: 20px;
       background: rgba(0,0,0,0.28);
       border: 1px solid rgba(255,255,255,0.10);
@@ -865,10 +232,11 @@
 
     .hero__bannerImg{
       width: 100%;
-      height: auto;              /* do NOT crop logos */
+      height: auto;
+      object-fit: contain;
       display: block;
       border-radius: 16px;
-      /* subtle fade on left/right/top ONLY (not bottom) */
+
       -webkit-mask-image: linear-gradient(to left,
         rgba(0,0,0,0.78) 0%,
         rgba(0,0,0,1.00) 10%,
@@ -914,6 +282,7 @@
       margin: 10px auto 0;
       max-width: 62ch;
       color: rgba(255,255,255,0.88);
+      font-size: 16px;
     }
 
     /* SECTIONS */
@@ -931,6 +300,7 @@
       color: var(--muted);
       text-align:center;
       margin: 0 0 18px;
+      font-size: 16px;
     }
 
     .panel{
@@ -943,9 +313,17 @@
       max-width: 78ch;
       margin: 0 auto;
       padding: 18px;
+      font-size: 16px;
     }
     .prose p{ margin: 0 0 12px; }
     .prose p:last-child{ margin-bottom:0; }
+
+    .prose a{
+      color: rgba(255,255,255,0.92);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.22);
+    }
+    .prose a:hover{ border-bottom-color: rgba(255,255,255,0.55); }
 
     .embed{
       margin: 18px auto 0;
@@ -970,6 +348,7 @@
       color: var(--text);
       text-decoration:none;
       font-weight: 800;
+      font-size: 15px;
     }
     .pill:hover{ background: rgba(0,0,0,0.55); }
 
@@ -1095,6 +474,10 @@
       <div class="wrap hero__content">
         <div class="hero__contentInner">
           <h1>SUB FIXX</h1>
+
+          <!-- SEO: hidden H1 helper -->
+          <h1 class="visually-hidden">Sub Fixx – Canadian Underground Drum &amp; Bass Producer &amp; DJ</h1>
+
           <p class="hero__tagline">
             Emotionally driven underground bass music built for dark rooms, loud systems, and connection.
           </p>
@@ -1133,6 +516,23 @@
           <p>Rooted in UK bass culture and shaped by years of multi-genre influence, his sound blends weight, tension, and atmosphere with deep low-end pressure. Every track is designed to hit with intent — not just to move bodies, but to pull people into the moment.</p>
           <p>The journey started in 1999 with his first set of turntables — long nights digging, learning, and building taste the hard way. After years of experimenting across sounds and scenes, he fully committed in the last couple of years when he switched to drum &amp; bass — a move that became a true game changer and sharpened the direction into something focused, heavy, and honest.</p>
           <p>This is music for immersive dancefloors, late nights, and shared energy.</p>
+
+          <!-- SEO + internal linking -->
+          <p>
+            Start here: <a href="#soundcloud">listen on SoundCloud</a>, then <a href="#contact">book / contact</a> for shows, collabs, and label inquiries.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO: keyword-rich paragraph section -->
+    <section class="section" id="seo">
+      <div class="wrap">
+        <h2>Underground Drum &amp; Bass by Sub Fixx</h2>
+        <div class="panel prose">
+          <p>
+            Sub Fixx is a Canadian underground drum &amp; bass producer and DJ focused on emotionally driven bass music built for dark rooms, loud systems, and immersive dancefloors. Expect deep low-end pressure, atmospheric tension, and clean, intentional movement designed for clubs, festivals, and late-night sets. Stream the latest mixes and originals on SoundCloud, and reach out for bookings and collaborations.
+          </p>
         </div>
       </div>
     </section>
@@ -1182,10 +582,12 @@
     <section class="section" id="social">
       <div class="wrap">
         <h2>Social</h2>
+        <p class="muted">Find Sub Fixx and DSP Records online.</p>
         <div class="links">
           <a class="pill" href="https://soundcloud.com/subfixx" target="_blank" rel="noopener">SoundCloud</a>
           <a class="pill" href="https://www.facebook.com/Subfixx" target="_blank" rel="noopener">Facebook (Sub Fixx)</a>
           <a class="pill" href="https://www.facebook.com/dyrtiesoundrecords" target="_blank" rel="noopener">Facebook (DSP Records)</a>
+          <a class="pill" href="#contact">Booking / Contact</a>
         </div>
       </div>
     </section>
@@ -1217,9 +619,25 @@
       </div>
     </section>
 
+    <section class="section" id="contact">
+      <div class="wrap">
+        <h2>Contact / Booking</h2>
+        <p class="muted">For bookings, collabs, demos, and label inquiries.</p>
+
+        <div class="panel prose" style="text-align:center; max-width:640px;">
+          <p style="margin:0 0 10px;"><strong>Sub Fixx</strong> — <a href="mailto:subfixx@live.ca">subfixx@live.ca</a></p>
+          <p style="margin:0;"><strong>DSP Records</strong> — <a href="mailto:dyrtiesound@live.ca">dyrtiesound@live.ca</a></p>
+        </div>
+      </div>
+    </section>
+
     <footer>
       <div class="wrap">
-        <div class="footer__line">© <span id="year"></span> Sub Fixx</div>
+        <div class="footer__line">
+          © <span id="year"></span> Sub Fixx •
+          <a href="#soundcloud" style="color:inherit; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.22);">SoundCloud</a> •
+          <a href="#contact" style="color:inherit; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.22);">Booking</a>
+        </div>
       </div>
     </footer>
   </main>
