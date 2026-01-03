@@ -26,6 +26,11 @@
 
       --baseFontScale:200%;
       --underEmbedScale:1.50;
+
+      /* NEW: EPK menu */
+      --navBg:rgba(0,0,0,0.58);
+      --navBorder:rgba(255,255,255,0.16);
+      --navHover:rgba(0,0,0,0.72);
     }
 
     *{box-sizing:border-box}
@@ -135,6 +140,46 @@
     h1{margin:0;font-size:clamp(28px,5vw,56px);letter-spacing:0.12em}
     .hero__tagline{margin:10px auto 0;max-width:70ch;color:rgba(255,255,255,0.88);font-size:16px}
 
+    /* NEW: EPK menu bar under hero */
+    .epkNav{
+      width:100%;
+      margin:10px auto 0;
+      padding:10px 0 0;
+    }
+    .epkNav__bar{
+      width:min(var(--wrap),calc(100% - 28px));
+      margin:0 auto;
+      padding:10px 12px;
+      border:1px solid var(--navBorder);
+      background:var(--navBg);
+      border-radius:999px;
+      box-shadow:var(--shadow);
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+      backdrop-filter:blur(8px);
+    }
+    .epkNav__link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.14);
+      background:rgba(0,0,0,0.35);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:900;
+      letter-spacing:0.02em;
+      font-size:15px;
+    }
+    .epkNav__link:hover{background:var(--navHover)}
+    .epkNav__link--primary{
+      border-color:rgba(255,255,255,0.22);
+      background:rgba(0,0,0,0.50);
+    }
+
     /* SECTIONS */
     .section{padding:42px 0;border-bottom:1px solid rgba(255,255,255,0.10)}
     h2{margin:0 0 12px;font-size:22px;letter-spacing:0.06em;text-align:center}
@@ -148,7 +193,7 @@
       box-shadow:var(--shadow);
     }
 
-    /* NEW: YouTube section styling (full width like Photos) */
+    /* YouTube section styling (full width like Photos) */
     .videoCard{
       width:100%;
       background:var(--panel2);
@@ -234,6 +279,7 @@
       .hero__bannerImg{width:min(var(--heroLogoMaxWMobile),92vw)}
       .actions{transform:scale(1.18)}
       .prose,.contactBox{padding:16px 16px}
+      .epkNav__bar{border-radius:22px}
     }
     @media (max-width:768px){
       body{background-attachment:scroll}
@@ -276,27 +322,176 @@
         />
       </div>
 
-      <div <div class="wrap hero__content">
-  <div class="hero__contentInner">
-    <p class="hero__tagline">
-      Emotionally driven underground bass music built for dark rooms, loud systems, and real connection.
-      <br>
-      <span style="opacity:0.85;">“This is me. This is who I am. And this is what I do.”</span>
-    </p>
-  </div>
-</div>
+      <!-- (kept your hero text exactly, just fixed the broken opening tag so it’s valid HTML; layout remains the same) -->
+      <div class="wrap hero__content">
+        <div class="hero__contentInner">
+          <p class="hero__tagline">
+            Emotionally driven underground bass music built for dark rooms, loud systems, and real connection.
+            <br>
+            <span style="opacity:0.85;">“This is me. This is who I am. And this is what I do.”</span>
+          </p>
+        </div>
+      </div>
 
-    <!-- NEW: YouTube full-length mix FIRST under hero -->
+      <!-- NEW: EPK menu directly under hero banner/content -->
+      <nav class="epkNav" aria-label="EPK menu">
+        <div class="epkNav__bar">
+          <a class="epkNav__link epkNav__link--primary" href="#epk">EPK</a>
+          <a class="epkNav__link" href="#epk-profile">Artist Profile</a>
+          <a class="epkNav__link" href="#epk-sound">Sound &amp; Identity</a>
+          <a class="epkNav__link" href="#epk-live">Live</a>
+          <a class="epkNav__link" href="#epk-listen">Listen / Follow</a>
+          <a class="epkNav__link" href="#epk-technical">Booking &amp; Technical</a>
+          <a class="epkNav__link" href="#youtube">YouTube</a>
+          <a class="epkNav__link" href="#soundcloud">SoundCloud</a>
+          <a class="epkNav__link" href="#photos">Photos</a>
+          <a class="epkNav__link" href="#releases">Releases</a>
+          <a class="epkNav__link" href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- NEW: EPK container header (matches your PDF cover info as text, optional) -->
+    <section class="section" id="epk">
+      <div class="wrap">
+        <h2>EPK (2026) — DJ / Producer</h2>
+        <p class="muted">Drum &amp; Bass • Neurofunk • Techstep • UK Underground • Half-Step</p>
+      </div>
+    </section>
+
+    <!-- NEW: EPK PAGE 2 — ARTIST PROFILE -->
+    <section class="section" id="epk-profile">
+      <div class="wrap">
+        <h2>Artist Profile</h2>
+        <p class="muted">Bio (Long)</p>
+
+        <div class="panel prose">
+          <p>Sub Fixx is an underground electronic artist from Port Alberni, British Columbia, Canada, crafting emotionally driven bass music rooted in UK drum &amp; bass culture. Beginning his DJ journey in 1999 through hip-hop and turntablism under the alias Faces, he spent years immersed in nightclub culture and underground events before stepping away in 2016.</p>
+          <p>In 2018, he re-emerged with a clear artistic reset, rebranding as Sub Fixx — a name derived from his signature approach to heavy sub-bass and deep emotional weight. After committing fully to drum &amp; bass in 2023, two of the first three tracks he produced in the genre were signed, leading to over 30 original releases across drum &amp; bass, UK garage, and bass-driven styles.</p>
+          <p>Music has been central to structuring and navigating his neurodivergence, transforming it from limitation into strength. Sub Fixx returned to the stage in January 2025 after a nine-year absence, now prioritizing professionally run underground events built on mutual respect, artist care, and sound-system culture.</p>
+        </div>
+
+        <div class="panel prose" style="margin-top:12px;">
+          <p><strong>Live Experience (Past Year):</strong></p>
+          <p style="text-align:center;margin:0;">- The Rabbit Hole — Courtenay, BC (Underground warehouse events)</p>
+          <p style="text-align:center;margin:0;">- The Mex Pub — Courtenay, BC (Nightclub performance)</p>
+          <p style="text-align:center;margin:0;">- Not Your Average Lineup Music Festival — Port Alice, BC</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW: EPK PAGE 3 — SOUND & IDENTITY -->
+    <section class="section" id="epk-sound">
+      <div class="wrap">
+        <h2>Sound &amp; Identity</h2>
+        <p class="muted">Genres &amp; Style</p>
+
+        <div class="panel prose">
+          <p style="text-align:center;margin-bottom:12px;">
+            Drum &amp; Bass, Neurofunk, Techstep, Darkcore, Jungle, Half-Step, Deep / Atmospheric, UK Bass
+          </p>
+
+          <p><strong>Sound description</strong></p>
+          <p>Underground UK after-hours sound built on deep sub pressure, dark atmospheres, emotional weight, and system-focused energy designed for dark rooms and loud systems.</p>
+
+          <p><strong>Artist Statement</strong></p>
+          <p>Sub Fixx uses music as structure, focus, and forward momentum — channeling intensity, emotion, and neurodivergent perception into disciplined, intentional sound design built for underground systems and late-night environments.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW: EPK PAGE 4 — LIVE EXPERIENCE (standalone page-style section) -->
+    <section class="section" id="epk-live">
+      <div class="wrap">
+        <h2>Live Experience</h2>
+        <p class="muted">Past year</p>
+
+        <ul class="panel list">
+          <li>The Rabbit Hole — Courtenay, BC (Underground warehouse events)</li>
+          <li>The Mex Pub — Courtenay, BC (Nightclub performance)</li>
+          <li>Not Your Average Lineup Music Festival — Port Alice, BC</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- NEW: EPK PAGE 5 — LISTEN / WATCH / FOLLOW -->
+    <section class="section" id="epk-listen">
+      <div class="wrap">
+        <h2>Listen / Watch / Follow</h2>
+        <p class="muted">SoundCloud is the primary platform</p>
+
+        <!-- NOTE: Links are placeholders where you didn’t provide URLs in the PDF.
+             If you want, paste your exact URLs and I’ll hardwire them in. -->
+        <div class="links">
+          <a class="pill" href="https://soundcloud.com/subfixx" target="_blank" rel="noopener">SoundCloud — Primary</a>
+          <a class="pill" href="#" title="Add your Beatport link">Beatport</a>
+          <a class="pill" href="#" title="Add your Spotify link">Spotify</a>
+          <a class="pill" href="#" title="Add your Apple Music link">Apple Music</a>
+          <a class="pill" href="#" title="Add your YouTube channel link">YouTube</a>
+          <a class="pill" href="#" title="Add your Amazon Music link">Amazon Music</a>
+          <a class="pill" href="#" title="Add your Deezer link">Deezer</a>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <h2 style="margin-top:0;">Socials</h2>
+        <div class="links">
+          <a class="pill" href="https://www.facebook.com/Subfixx" target="_blank" rel="noopener">Facebook</a>
+          <a class="pill" href="#" title="Add your Instagram link">Instagram</a>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <h2 style="margin-top:0;">Official Website</h2>
+        <div class="links">
+          <a class="pill" href="#" title="Set your official website link">Website</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW: EPK PAGE 6 — BOOKING & TECHNICAL -->
+    <section class="section" id="epk-technical">
+      <div class="wrap">
+        <h2>Booking &amp; Technical</h2>
+        <p class="muted">Booking &amp; representation, technical requirements, and label affiliations</p>
+
+        <div class="panel prose">
+          <p><strong>Booking &amp; Representation</strong></p>
+          <p>Sub Fixx is represented for bookings and project coordination through DSP Records (Dyrtie Sound Productions).</p>
+          <p style="text-align:center;margin:0;"><strong>All booking and professional inquiries:</strong></p>
+          <p style="text-align:center;margin:0;"><a href="mailto:dyrtiesound@live.ca">dyrtiesound@live.ca</a></p>
+        </div>
+
+        <div class="panel prose" style="margin-top:12px;">
+          <p><strong>Technical Requirements</strong></p>
+          <p>Standard club or festival DJ setup preferred.</p>
+          <p>Pioneer CDJ-3000 players with a DJM-900NXS2 or DJM-A9 mixer, or equivalent professional equipment.</p>
+          <p>Sub Fixx is adaptable to venue-provided professional DJ setups with advance confirmation.</p>
+        </div>
+
+        <div class="panel prose" style="margin-top:12px;">
+          <p><strong>Label Affiliations</strong></p>
+          <ul class="list" style="margin:10px 0 0;">
+            <li>Stell Recordings (Ukraine)</li>
+            <li>Matrix Music Records (Europe)</li>
+            <li>Gangster House Records (Europe)</li>
+            <li>Wolf Rage Recordings (Europe)</li>
+            <li>B Nasty Beats (Canada)</li>
+            <li>LW Recordings (United Kingdom)</li>
+            <li>Bad Music Records (Canada)</li>
+            <li>DSP Records (Canada)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXISTING: YouTube full-length mix FIRST under hero -->
     <section class="section" id="youtube">
       <div class="wrap">
         <h2>Dark Side Conversion Vol. 05 (Full Mix)</h2>
         <p class="muted">Full-length visualizer now live on YouTube.</p>
 
         <div class="videoCard">
-          <!--
-            IMPORTANT: Autoplay on load requires muted=true in most browsers.
-            If you want sound by default, it WILL require a user click.
-          -->
           <iframe
             class="videoFrame"
             src="https://www.youtube.com/embed/rhp6jYRPgu8?autoplay=1&mute=1&playsinline=1&rel=0"
@@ -332,6 +527,7 @@
       </div>
     </section>
 
+    <!-- EXISTING: Bio (kept) -->
     <section class="section" id="bio">
       <div class="wrap">
         <h2>Bio</h2>
@@ -341,6 +537,14 @@
           <p>The journey started in 1999 with his first set of turntables — long nights digging, learning, and building taste the hard way. After years of experimenting across sounds and scenes, he fully committed in the last couple of years when he switched to drum &amp; bass — a move that became a true game changer and sharpened the direction into something focused, heavy, and honest.</p>
           <p>This is music for immersive dancefloors, late nights, and shared energy.</p>
           <p>Start here: <a href="#soundcloud">listen on SoundCloud</a>, then <a href="#contact">book / contact</a> for shows, collabs, and label inquiries.</p>
+        </div>
+
+        <!-- NEW: Add EPK long bio as “extra”, not replacing your existing bio -->
+        <div class="panel prose" style="margin-top:12px;">
+          <p><strong>EPK Bio (Long)</strong></p>
+          <p>Sub Fixx is an underground electronic artist from Port Alberni, British Columbia, Canada, crafting emotionally driven bass music rooted in UK drum &amp; bass culture. Beginning his DJ journey in 1999 through hip-hop and turntablism under the alias Faces, he spent years immersed in nightclub culture and underground events before stepping away in 2016.</p>
+          <p>In 2018, he re-emerged with a clear artistic reset, rebranding as Sub Fixx — a name derived from his signature approach to heavy sub-bass and deep emotional weight. After committing fully to drum &amp; bass in 2023, two of the first three tracks he produced in the genre were signed, leading to over 30 original releases across drum &amp; bass, UK garage, and bass-driven styles.</p>
+          <p>Music has been central to structuring and navigating his neurodivergence, transforming it from limitation into strength. Sub Fixx returned to the stage in January 2025 after a nine-year absence, now prioritizing professionally run underground events built on mutual respect, artist care, and sound-system culture.</p>
         </div>
       </div>
     </section>
@@ -398,6 +602,7 @@
       </div>
     </section>
 
+    <!-- EXISTING: Labels (kept) -->
     <section class="section" id="labels">
       <div class="wrap">
         <h2>Labels</h2>
@@ -411,6 +616,19 @@
           <li>Gangster House Records(EU)</li>
           <li>DSP Records(CDN)</li>
         </ul>
+
+        <!-- NEW: EPK Label Affiliations list (added, not replacing) -->
+        <div class="panel prose" style="margin-top:12px;">
+          <p><strong>Label Affiliations (EPK)</strong></p>
+          <p style="text-align:center;margin:0;">Stell Recordings (Ukraine)</p>
+          <p style="text-align:center;margin:0;">Matrix Music Records (Europe)</p>
+          <p style="text-align:center;margin:0;">Gangster House Records (Europe)</p>
+          <p style="text-align:center;margin:0;">Wolf Rage Recordings (Europe)</p>
+          <p style="text-align:center;margin:0;">B Nasty Beats (Canada)</p>
+          <p style="text-align:center;margin:0;">LW Recordings (United Kingdom)</p>
+          <p style="text-align:center;margin:0;">Bad Music Records (Canada)</p>
+          <p style="text-align:center;margin:0;">DSP Records (Canada)</p>
+        </div>
       </div>
     </section>
 
@@ -426,6 +644,7 @@
       </div>
     </section>
 
+    <!-- EXISTING: Contact (kept) -->
     <section class="section" id="contact">
       <div class="wrap">
         <h2>Contact / Booking</h2>
@@ -434,6 +653,13 @@
         <div class="panel contactBox">
           <div><strong>Sub Fixx</strong> — <a href="mailto:subfixx@live.ca">subfixx@live.com</a></div>
           <p class="contactLine"><strong>DSP Records</strong> — <a href="mailto:dyrtiesound@live.ca">dyrtiesound@live.ca</a></p>
+        </div>
+
+        <!-- NEW: EPK booking statement (added) -->
+        <div class="panel prose" style="margin-top:12px;">
+          <p style="text-align:center;margin:0;"><strong>Booking &amp; Representation</strong></p>
+          <p style="text-align:center;margin:0;">Sub Fixx is represented for bookings and project coordination through DSP Records (Dyrtie Sound Productions).</p>
+          <p style="text-align:center;margin:0;">All booking and professional inquiries: <a href="mailto:dyrtiesound@live.ca">dyrtiesound@live.ca</a></p>
         </div>
       </div>
     </section>
